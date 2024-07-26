@@ -34,6 +34,6 @@ Logs are saved to `defragmentation.log` in the following format:
 2023-07-26 10:02:00 - INFO - Defragmentation completed.
 
 
-# Proof of Concept: Hard Drive Disk Defragmenter
+```# Proof of Concept: Hard Drive Disk Defragmenter
 
 This is just a proof of concept. It’s experimental, and it may not work as it should. I just wanted to create something that resembled an old-school hard drive disk defragmenter. Since it’s very experimental and I’m very new to creating such a tool, the odds are it probably won’t work as expected. I’ll keep attempting to update it here and there to make the modes actually represent what they should be doing with a true defragmenter program.
