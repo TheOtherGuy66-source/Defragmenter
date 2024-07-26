@@ -213,7 +213,7 @@ class DefragmenterGUI(QWidget):
         self.log("Moved a fragmented block to a new position.", "info")
 
         # Update progress bar
-        progress = ((self.block_count - len(fragmented_blocks)) / self.block_count) * 100
+        progress = int(((self.block_count - len(fragmented_blocks)) / self.block_count) * 100)
         self.progress_bar.setValue(progress)
 
 def main():
