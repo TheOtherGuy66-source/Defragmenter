@@ -1,4 +1,5 @@
 ![Screenshot 2024-07-26 122128](https://github.com/user-attachments/assets/1d58353e-fe91-4870-85fd-748c0bf69b94)
+![Screenshot 2024-07-26 124000](https://github.com/user-attachments/assets/83fb4e07-a5a0-4b90-afc1-966019d6eb2e)
 
 # Simple Hard Drive Defragmenter
 
