@@ -3,13 +3,18 @@ import sys
 import random
 import time
 import logging
-from datetime import datetime
 import shutil
 import tempfile
 import mmap
 import secrets
 import os
 import timeit
+from datetime import datetime
+from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout,
+                             QHBoxLayout, QGraphicsView, QGraphicsScene, QGraphicsRectItem,
+                             QTextEdit, QProgressBar, QComboBox, QMessageBox)
+from PyQt5.QtGui import QColor, QBrush, QFont
+from PyQt5.QtCore import Qt, QTimer
 
 def install_packages():
     required_packages = ['PyQt5']
@@ -21,14 +26,8 @@ def install_packages():
 
 install_packages()
 
-from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, 
-                             QHBoxLayout, QGraphicsView, QGraphicsScene, QGraphicsRectItem, 
-                             QTextEdit, QProgressBar, QComboBox, QMessageBox)
-from PyQt5.QtGui import QColor, QBrush, QFont
-from PyQt5.QtCore import Qt, QRectF, QTimer
-
 # Set up logging
-logging.basicConfig(filename='defragmentation.log', level=logging.INFO, 
+logging.basicConfig(filename='defragmentation.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 class Process:
@@ -48,6 +47,10 @@ class DefragmenterGUI(QWidget):
         self.defrag_mode = None
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_defragmentation)
+        self.current_job = None
+        self.current_job_flags = 0
+        self.abort_flag = False
+        self.progress_line_length = 0
 
     def initUI(self):
         self.setWindowTitle("Simple Hard Drive Defragmenter")
@@ -134,7 +137,7 @@ class DefragmenterGUI(QWidget):
         self.speed_combo.addItems(["Slow", "Normal", "Fast"])
         self.speed_combo.setStyleSheet("background-color: #1e1e1e; color: #ffffff; border: 1px solid #3c3f41;")
         hbox_settings.addWidget(self.speed_combo)
-        
+
         vbox.addLayout(hbox_settings)
 
         self.setLayout(vbox)
